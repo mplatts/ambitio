@@ -6,7 +6,7 @@ app = express()
 app.configure ->
   app.use express.bodyParser() # params become available as req.body
   app.set "port", process.env.PORT or 3000
-  app.set "storage-uri", process.env.MONGOHQ_URL or process.env.MONGOLAB_URI or 'mongodb://localhost/widgets'
+  app.set "storage-uri", process.env.MONGOHQ_URL or process.env.MONGOLAB_URI or 'mongodb://localhost/ambitio'
 
 mongoose.connect app.get('storage-uri'), { db: { safe: true }}, (err) ->
   console.log "Mongoose - connection error: " + err if err?

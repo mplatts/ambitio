@@ -3,12 +3,14 @@
   "description": "Goals for ambitious people",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "0.10.x",
+    "npm":  "1.2.x"
+  },
   "dependencies": {
     "coffee-script": "latest",
     "express": "3.x",
-    "mongoose": "latest",
-    "coffee-script-brunch": "~1.7.2",
-    "stylus-brunch": "~1.7.0"
+    "mongoose": "latest"
   },
   "scripts": {
     "start": "coffee -w app.coffee"
