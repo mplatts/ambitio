@@ -1,0 +1,13 @@
+!!! 5
+html(ng-app='ambitio')
+  head
+    title Ambitio
+    != liveReload
+    link(rel="stylesheet", type="text/css", href="assets/css/app.css?" + new Date().getTime())
+    script(src='assets/js/libs.js?' + new Date().getTime())
+    script(src='assets/js/app.js?' + new Date().getTime())
+
+  body
+    div.outer-wrapper
+      div.container
+        ng-view

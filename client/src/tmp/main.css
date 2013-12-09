@@ -1,0 +1,10 @@
+body {
+  background: #ecd078; }
+  body h1 {
+    color: #ecd078; }
+
+.goals {
+  background: #d95b43;
+  border-radius: 5px; }
+  .goals goal {
+    background: #53777a; }
