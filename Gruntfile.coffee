@@ -98,7 +98,8 @@ module.exports = (grunt) ->
           "#{SRC}/lib/js/angular-resource.js",
           "#{SRC}/lib/js/angular-route.js",
           "#{SRC}/lib/js/angular-touch.js",
-          "#{SRC}/lib/js/angular-animate.js"
+          "#{SRC}/lib/js/angular-animate.js",
+          "#{SRC}/lib/js/jquery.nouislider.js"
         ],
         dest: "#{ASSETS}/js/libs.js"
 

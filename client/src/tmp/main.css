@@ -3,8 +3,13 @@ body {
   body h1 {
     color: #ecd078; }
 
-.goals {
+.goals goal {
+  background: black; }
+  .goals goal h3 {
+    color: #542437; }
+  .goals goal slider input.amount {
+    width: 100%; }
+
+section {
   background: #d95b43;
   border-radius: 5px; }
-  .goals goal {
-    background: #53777a; }

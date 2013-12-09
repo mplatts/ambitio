@@ -6,10 +6,12 @@
 window.app = angular.module('ambitio', [
   'ngRoute',
   'ngResource',
-  'ambitio.controllers'
+  'ambitio.controllers',
+  'ambitio.directives'
 ])
 
 angular.module('ambitio.controllers', [])
+angular.module('ambitio.directives', [])
 
 # Create routes
 # Routes point to a controller and a base template

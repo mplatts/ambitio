@@ -28,8 +28,13 @@ app.get '/', (req, res) ->
 
 app.get '/views/:name', (req, res) ->
   name = req.params.name
-  console.log "attempting to get view", name
-  res.render path.join(__dirname, PUBLIC_DIR, "views", name)
+  console.log "attempting to get view ", name
+  res.render path.join(__dirname, PUBLIC_DIR, 'views', name)
+
+app.get '/views/templates/:name', (req, res) ->
+  name = req.params.name
+  console.log "attempting to get view ", name
+  res.render path.join(__dirname, PUBLIC_DIR, 'views', 'templates', name)
 
 app.post '/goals', goals.create
 app.get '/goals', goals.retrieve

@@ -1,8 +1,10 @@
 (function() {
   'use strict';
-  window.app = angular.module('ambitio', ['ngRoute', 'ngResource', 'ambitio.controllers']);
+  window.app = angular.module('ambitio', ['ngRoute', 'ngResource', 'ambitio.controllers', 'ambitio.directives']);
 
   angular.module('ambitio.controllers', []);
+
+  angular.module('ambitio.directives', []);
 
   app.config(function($routeProvider, $locationProvider) {
     var cwd;
@@ -16,6 +18,29 @@
     }).otherwise({
       redirectTo: '/'
     });
+  });
+
+  angular.module('ambitio.directives').directive('slider', function() {
+    var link;
+    link = function(scope, $element, attrs) {
+      var $slider;
+      $slider = $element.find('.noUiSlider');
+      console.log($element.find('.amount'));
+      return $slider.noUiSlider({
+        range: [0, 40],
+        handles: 1,
+        start: 0,
+        serialization: {
+          resolution: 1,
+          to: $element.find('.amount')
+        }
+      });
+    };
+    return {
+      templateUrl: 'views/templates/slider.html',
+      restrict: 'E',
+      link: link
+    };
   });
 
   'use strict';

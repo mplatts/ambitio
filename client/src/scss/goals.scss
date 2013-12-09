@@ -1,12 +1,22 @@
 .goals {
-  background: $color3;
-  border-radius: 5px;
 
   goal {
-    background: $color5;
+    background: black;
+
+    h3 { 
+      color: $color1
+    }
     
-    .unit {
+    slider {
     
+      input.amount {
+        width: 100%;
+      }
     }
   }
+}
+
+section {
+  background: $color3;
+  border-radius: 5px;
 }

@@ -6,10 +6,12 @@
 window.app = angular.module('ambitio', [
   'ngRoute',
   'ngResource',
-  'ambitio.controllers'
+  'ambitio.controllers',
+  'ambitio.directives'
 ])
 
 angular.module('ambitio.controllers', [])
+angular.module('ambitio.directives', [])
 
 # Create routes
 # Routes point to a controller and a base template
@@ -28,6 +30,26 @@ app.config ($routeProvider, $locationProvider) ->
       redirectTo: '/'
 
   #$locationProvider.html5Mode(true)
+
+angular.module('ambitio.directives').directive('slider', ->
+  link = (scope, $element, attrs) ->
+    $slider = $element.find('.noUiSlider')
+    console.log $element.find('.amount')
+    $slider.noUiSlider({
+      range: [0,40]
+      handles: 1
+      start: 0
+      serialization:
+        resolution: 1
+        to: $element.find('.amount')
+    })
+
+  {
+    templateUrl: 'views/templates/slider.html'
+    restrict: 'E' # restrict to Element (defaults to A (Attribute)
+    link: link
+  }
+)
 
 'use strict'
 

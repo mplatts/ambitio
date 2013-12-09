@@ -1,11 +1,11 @@
-.row
-  .goals.col-md-12
-    h1 Goals
-    goal(ng-repeat='goal in goals') {{ goal.title }}
-      .units
-        span.unit
-        span.unit
-        span.unit
-        span.unit
+.goals
+  .row
+    section.col-md-6
+      h1 Goals
+      goal(ng-repeat='goal in goals')
+        h3 {{ goal.title }}
+        slider
+    section.col-md-6
+      .graphs
 
 
