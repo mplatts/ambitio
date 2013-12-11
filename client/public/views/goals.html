@@ -3,13 +3,11 @@
   <div class="row">
     <section class="col-md-6">
       <h1>Goals</h1>
-      <goal ng-repeat="goal in goals">
-        <h3>{{ goal.title }}</h3>
-        <slider></slider>
-      </goal>
+      <button ng-click="createGoal()">New Goal</button>
+      <goal ng-repeat="goal in goals"></goal>
     </section>
-    <section class="col-md-6">
-      <div class="graphs"></div>
+    <section class="col-md-5 col-md-offset-1">
+      <h1>Graphs</h1>
     </section>
   </div>
 </div>

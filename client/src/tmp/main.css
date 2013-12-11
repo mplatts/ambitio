@@ -3,13 +3,15 @@ body {
   body h1 {
     color: #ecd078; }
 
-.goals goal {
-  background: black; }
-  .goals goal h3 {
-    color: #542437; }
-  .goals goal slider input.amount {
-    width: 100%; }
+.goals h1 {
+  margin-top: 0; }
+.goals goal h3 {
+  color: #542437; }
+.goals goal slider input.amount {
+  width: 100%; }
 
 section {
   background: #d95b43;
-  border-radius: 5px; }
+  border-radius: 5px;
+  padding: 20px inherit;
+  margin-top: 20px; }

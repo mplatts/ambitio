@@ -1,14 +1,19 @@
 angular.module('ambitio.directives').directive('slider', ->
   link = (scope, $element, attrs) ->
     $slider = $element.find('.noUiSlider')
-    console.log $element.find('.amount')
     $slider.noUiSlider({
-      range: [0,40]
+      range: [0, scope.subgoal.target]
       handles: 1
-      start: 0
+      start: scope.subgoal.current
+      scope: {
+        subgoal: scope.subgoal
+      }
       serialization:
         resolution: 1
-        to: $element.find('.amount')
+        to: [
+          (number) ->
+            scope.subgoal.current = number
+        ]
     })
 
   {

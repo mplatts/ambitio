@@ -1,0 +1,4 @@
+.editable
+  span(ng-dblclick='startEditing()', ng-hide='editing') 
+    {{ view.editable }}
+  input(type='text', ng-keypress='keyPress($event)', ng-blur='stopEditing()', ng-show='editing', ng-model='view.editable')

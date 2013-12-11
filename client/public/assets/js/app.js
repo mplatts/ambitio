@@ -20,19 +20,66 @@
     });
   });
 
+  angular.module('ambitio.directives').directive('editable', function() {
+    return {
+      restrict: 'A',
+      replace: true,
+      templateUrl: 'views/templates/editable.html',
+      scope: {
+        editable: '=editable'
+      },
+      controller: function($scope) {
+        $scope.view = {
+          editing: false,
+          editable: $scope.editable
+        };
+        $scope.startEditing = function() {
+          return $scope.editing = true;
+        };
+        $scope.stopEditing = function() {
+          $scope.editing = false;
+          return $scope.editable = $scope.view.editable;
+        };
+        return $scope.keyPress = function(event) {
+          if (event.keyCode === 13) {
+            return $scope.stopEditing();
+          }
+        };
+      }
+    };
+  });
+
+  angular.module('ambitio.directives').directive('goal', function() {
+    var link;
+    link = function(scope, $element, attrs) {
+      return console.log(scope);
+    };
+    return {
+      templateUrl: 'views/templates/goal.html',
+      restrict: 'E',
+      link: link
+    };
+  });
+
   angular.module('ambitio.directives').directive('slider', function() {
     var link;
     link = function(scope, $element, attrs) {
       var $slider;
       $slider = $element.find('.noUiSlider');
-      console.log($element.find('.amount'));
       return $slider.noUiSlider({
-        range: [0, 40],
+        range: [0, scope.subgoal.target],
         handles: 1,
-        start: 0,
+        start: scope.subgoal.current,
+        scope: {
+          subgoal: scope.subgoal
+        },
         serialization: {
           resolution: 1,
-          to: $element.find('.amount')
+          to: [
+            function(number) {
+              return scope.subgoal.current = number;
+            }
+          ]
         }
       });
     };
@@ -58,11 +105,25 @@
   'use strict';
 
   angular.module("ambitio.controllers").controller('GoalsCtrl', function($scope) {
+    $scope.createGoal = function() {
+      return $scope.goals.push({
+        title: "Goal " + ($scope.goals.length + 1),
+        status: "incomplete",
+        subgoals: [
+          {
+            title: "Subgoal 1",
+            current: 0,
+            target: 10,
+            measurement: "kg"
+          }
+        ]
+      });
+    };
     return $scope.goals = [
       {
         title: "Get fit",
         status: "incomplete",
-        measures: [
+        subgoals: [
           {
             title: "Dead lifts",
             current: 60,
@@ -73,10 +134,10 @@
       }, {
         title: "Eat healthy",
         status: "complete",
-        measures: [
+        subgoals: [
           {
             title: "No Gluten",
-            current: 1,
+            current: 9,
             target: 30,
             measurement: "days"
           }

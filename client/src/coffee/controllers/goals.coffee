@@ -1,11 +1,25 @@
 'use strict'
 
 angular.module("ambitio.controllers").controller 'GoalsCtrl', ($scope) ->
+  $scope.createGoal = ->
+    $scope.goals.push({
+      title: "Goal #{$scope.goals.length + 1}"
+      status: "incomplete"
+      subgoals: [
+        {
+          title: "Subgoal 1"
+          current: 0
+          target: 10
+          measurement: "kg"
+        }
+      ]
+    })
+
   $scope.goals = [
     {
       title: "Get fit"
       status: "incomplete"
-      measures: [
+      subgoals: [
         {
           title: "Dead lifts"
           current: 60
@@ -17,10 +31,10 @@ angular.module("ambitio.controllers").controller 'GoalsCtrl', ($scope) ->
     {
       title: "Eat healthy"
       status: "complete"
-      measures: [
+      subgoals: [
         {
           title: "No Gluten"
-          current: 1
+          current: 9
           target: 30
           measurement: "days"
         }

@@ -1,7 +1,9 @@
 .goals {
+  h1 {
+    margin-top: 0;
+  }
 
   goal {
-    background: black;
 
     h3 { 
       color: $color1
@@ -19,4 +21,6 @@
 section {
   background: $color3;
   border-radius: 5px;
+  padding: 20px inherit;
+  margin-top: 20px;
 }

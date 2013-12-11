@@ -1,0 +1,16 @@
+
+<h3> <span editable="goal.title"></span></h3>
+<div ng-repeat="subgoal in goal.subgoals" class="subgoal">
+  <h4><span editable="subgoal.title"></span></h4>
+  <div class="row">
+    <div class="col-md-8">
+      <slider></slider>
+    </div>
+    <div class="col-md-2">
+      <input ng-model="subgoal.current" class="amount"/>
+    </div>
+    <div class="col-md-2">
+      <p class="measure">{{ subgoal.measurement }}</p>
+    </div>
+  </div>
+</div>
