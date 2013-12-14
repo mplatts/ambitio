@@ -2,14 +2,38 @@
 <html ng-app="ambitio">
   <head>
     <title>Ambitio</title><script src="http://localhost:35729/livereload.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/css/app.css?1386749030032">
-    <script src="assets/js/libs.js?1386749030032"></script>
-    <script src="assets/js/app.js?1386749030033"></script>
+    <link href="http://fonts.googleapis.com/css?family=Oswald:300,400,700|Open+Sans:400,700,300" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="assets/css/app.css?1386984635350">
+    <script src="assets/js/libs.js?1386984635350"></script>
+    <script src="assets/js/app.js?1386984635350"></script>
   </head>
   <body>
-    <div class="outer-wrapper">
-      <div class="container">
-        <ng-view></ng-view>
+    <div class="all-wrapper">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="text-center">
+            <button type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          </div>
+          <div class="side-bar-wrapper collapse navbar-collapse navbar-ex1-collapse"><a href="#" class="logo hidden-sm hidden-xs"><i class="icon-level-up"></i><span>Ambitio</span><i class="tagline">Goal tracking for ambitious people</i></a>
+            <ul class="side-menu">
+              <li><a href="#">
+                  <!-- span.badge.badge-notifications.pull-right.alert-animated 5--><i class="icon-compass"></i>Goals</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="content-wrapper wood-wrapper">
+            <div class="content-inner content-inner-white">
+              <div class="page-header page-header-blue">
+                <div class="header-links hidden-xs"><a href="#"><i class="icon-cog"></i>Settings</a><a href="#"><i class="icon-signout"></i>Logout</a></div>
+                <h1><i class="icon-compass"></i>Goals</h1>
+              </div>
+              <div class="main-content">
+                <ng-view></ng-view>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

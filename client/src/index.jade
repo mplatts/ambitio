@@ -3,11 +3,48 @@ html(ng-app='ambitio')
   head
     title Ambitio
     != liveReload
+    link(href='http://fonts.googleapis.com/css?family=Oswald:300,400,700|Open+Sans:400,700,300', rel='stylesheet', type='text/css')
     link(rel="stylesheet", type="text/css", href="assets/css/app.css?" + new Date().getTime())
     script(src='assets/js/libs.js?' + new Date().getTime())
     script(src='assets/js/app.js?' + new Date().getTime())
 
   body
-    div.outer-wrapper
-      div.container
-        ng-view
+    .all-wrapper
+      .row
+        .col-md-3
+          .text-center
+            button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-ex1-collapse")
+              span(class="sr-only") Toggle navigation
+              span(class="icon-bar")
+              span(class="icon-bar")
+              span(class="icon-bar")
+
+          .side-bar-wrapper.collapse.navbar-collapse.navbar-ex1-collapse
+            a(href="#", class="logo hidden-sm hidden-xs")
+              i(class="icon-level-up")
+              span Ambitio
+              i.tagline Goal tracking for ambitious people
+
+            ul.side-menu
+              li
+                a(href="#")
+                  // span.badge.badge-notifications.pull-right.alert-animated 5
+                  i.icon-compass
+                  | Goals
+
+        .col-md-9
+          .content-wrapper.wood-wrapper
+            .content-inner.content-inner-white
+              .page-header.page-header-blue
+                .header-links.hidden-xs
+                  a(href="#")
+                    i.icon-cog
+                    | Settings
+                  a(href="#")
+                    i.icon-signout
+                    | Logout
+                h1
+                  i.icon-compass
+                  | Goals
+              .main-content
+                ng-view

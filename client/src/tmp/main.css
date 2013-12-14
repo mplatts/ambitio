@@ -1,7 +1,5 @@
-body {
-  background: #ecd078; }
-  body h1 {
-    color: #ecd078; }
+.side-bar-wrapper .logo i.tagline {
+  font-size: 12px; }
 
 .goals h1 {
   margin-top: 0; }

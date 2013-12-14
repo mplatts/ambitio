@@ -57,6 +57,9 @@ module.exports = (grunt) ->
         tasks: ['coffee']
         options:
           livereload: true
+      lib:
+        files: "#{SRC}/lib/"
+        tasks: ['copy']
 
     template:
       index:
@@ -89,6 +92,8 @@ module.exports = (grunt) ->
     copy:
       fonts:
         files: [{expand: true, cwd: "#{SRC}/lib/fonts", src: ["**"], dest: "#{ASSETS}/fonts/"}]
+      images:
+        files: [{expand: true, cwd: "#{SRC}/lib/images", src: ["**"], dest: "#{ASSETS}/images/"}]
 
     concat:
       jsLibs:

@@ -1,10 +1,4 @@
-.goals
-  .row
-    section.col-md-6
-      h1 Goals
-      button(ng-click='createGoal()') New Goal
-      goal(ng-repeat='goal in goals')
+.widget
+  button.btn.btn-default(ng-click='createGoal()') + New Goal
 
-    section.col-md-5.col-md-offset-1
-      h1 Graphs
-
+goal(ng-repeat='goal in goals')

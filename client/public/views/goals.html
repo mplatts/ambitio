@@ -1,13 +1,5 @@
 
-<div class="goals">
-  <div class="row">
-    <section class="col-md-6">
-      <h1>Goals</h1>
-      <button ng-click="createGoal()">New Goal</button>
-      <goal ng-repeat="goal in goals"></goal>
-    </section>
-    <section class="col-md-5 col-md-offset-1">
-      <h1>Graphs</h1>
-    </section>
-  </div>
+<div class="widget">
+  <button ng-click="createGoal()" class="btn btn-default">+ New Goal</button>
 </div>
+<goal ng-repeat="goal in goals"></goal>
