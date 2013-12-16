@@ -1,0 +1,25 @@
+
+<div class="widget-content-blue-wrapper changed-up">
+  <div class="widget-content-blue-inner padded">
+    <div class="pre-value-block"><i class="icon-compass"></i>{{ subgoal.title }}</div>
+    <div class="row">
+      <div class="col-md-10">
+        <slider></slider>
+      </div>
+      <div class="col-md-2 push-down">
+        <p class="measure">
+           
+          {{ subgoal.current }} {{ subgoal.measurement }} <a href="javascript:void(0)" ng-click="save()"><i class="icon-save"></i></a>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <sparkline ng-model="subgoal"></sparkline><span ng-repeat="record in subgoal.records">
+           
+          {{ record.value }}</span>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

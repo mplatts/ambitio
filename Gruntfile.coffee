@@ -71,7 +71,6 @@ module.exports = (grunt) ->
     jade:
       index:
         options:
-          client: false
           pretty: true
           data: INDEX_DATA
         files:
@@ -79,7 +78,6 @@ module.exports = (grunt) ->
           
       views:
         options:
-          client: false
           pretty: true
         files: [ {
           cwd: "#{SRC}/views/",
@@ -98,19 +96,20 @@ module.exports = (grunt) ->
     concat:
       jsLibs:
         src: [
-          "#{SRC}/lib/js/jquery2.js",
-          "#{SRC}/lib/js/angular.js",
-          "#{SRC}/lib/js/angular-resource.js",
-          "#{SRC}/lib/js/angular-route.js",
-          "#{SRC}/lib/js/angular-touch.js",
-          "#{SRC}/lib/js/angular-animate.js",
-          "#{SRC}/lib/js/jquery.nouislider.js"
+          "#{SRC}/lib/components/jquery/jquery.min.js"
+          "#{SRC}/lib/components/angular/angular.min.js"
+          "#{SRC}/lib/components/angular-resource/angular-resource.min.js"
+          "#{SRC}/lib/components/angular-route/angular-route.min.js"
+          "#{SRC}/lib/components/angular-touch/angular-touch.min.js"
+          "#{SRC}/lib/components/angular-animate/angular-animate.min.js"
+          "#{SRC}/lib/components/nouislider/jquery.nouislider.js"
+          "#{SRC}/lib/js/jquery.piety.min.js"
         ],
         dest: "#{ASSETS}/js/libs.js"
 
       cssToDest:
         src: [
-          "#{SRC}/lib/css/*.css",
+          "#{SRC}/lib/css/*.css"
           "#{SRC}/tmp/main.css"
         ],
         dest: "#{ASSETS}/css/app.css"

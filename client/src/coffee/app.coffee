@@ -4,9 +4,10 @@
 # It needs ngRoute for routing
 # and ngResource for data modelling
 window.app = angular.module('ambitio', [
-  'ngRoute',
-  'ngResource',
-  'ambitio.controllers',
+  'ngRoute'
+  'ngTouch'
+  'ngResource'
+  'ambitio.controllers'
   'ambitio.directives'
 ])
 

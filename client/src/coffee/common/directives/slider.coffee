@@ -5,20 +5,18 @@ angular.module('ambitio.directives').directive('slider', ->
       range: [0, scope.subgoal.target]
       handles: 1
       start: scope.subgoal.current
-      scope: {
-        subgoal: scope.subgoal
-      }
       serialization:
         resolution: 1
-        to: [
-          (number) ->
-            scope.subgoal.current = number
-        ]
-    })
+        to: $element.find('input.amount')
+    }).change ->
+      scope.$apply ->
+        scope.subgoal.current = $slider.val()
 
   {
     templateUrl: 'views/templates/slider.html'
     restrict: 'E' # restrict to Element (defaults to A (Attribute)
     link: link
+    controller: ($scope) ->
+      console.log 'slider', $scope
   }
 )

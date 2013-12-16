@@ -3,13 +3,4 @@
     i.icon-tasks
     | {{ goal.title }}
 
-  .subgoal(ng-repeat='subgoal in goal.subgoals')
-    h4
-      span(editable='subgoal.title')
-    .row
-      .col-md-8
-        slider
-      .col-md-2
-        input.amount(ng-model='subgoal.current')
-      .col-md-2
-        p.measure {{ subgoal.measurement }}
+  subgoal(ng-repeat='subgoal in goal.subgoals', ng-model='subgoal')

@@ -1,0 +1,20 @@
+.widget-content-blue-wrapper.changed-up
+  .widget-content-blue-inner.padded
+    .pre-value-block
+      i.icon-compass
+      | {{ subgoal.title }}
+    .row
+      .col-md-10
+        slider
+      .col-md-2.push-down
+        p.measure 
+          {{ subgoal.current }} {{ subgoal.measurement }} 
+          a(href='javascript:void(0)', ng-click='save()')
+            i.icon-save
+    .row
+      .col-md-12
+        sparkline(ng-model='subgoal')
+        span(ng-repeat='record in subgoal.records') 
+          {{ record.value }}
+    .clearfix
+

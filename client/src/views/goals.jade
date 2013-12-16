@@ -1,4 +1,4 @@
 .widget
   button.btn.btn-default(ng-click='createGoal()') + New Goal
 
-goal(ng-repeat='goal in goals')
+goal(ng-repeat='goal in goals', ng-model='goal')

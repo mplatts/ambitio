@@ -4,9 +4,10 @@
 # It needs ngRoute for routing
 # and ngResource for data modelling
 window.app = angular.module('ambitio', [
-  'ngRoute',
-  'ngResource',
-  'ambitio.controllers',
+  'ngRoute'
+  'ngTouch'
+  'ngResource'
+  'ambitio.controllers'
   'ambitio.directives'
 ])
 
@@ -57,13 +58,12 @@ angular.module('ambitio.directives').directive 'editable', ->
   }
 
 angular.module('ambitio.directives').directive 'goal', ->
-  link = (scope, $element, attrs) ->
-    console.log scope
-
   {
     templateUrl: 'views/templates/goal.html'
     restrict: 'E'
-    link: link
+    require: 'ngModel'
+    scope:
+      goal: '=ngModel'
   }
 
 angular.module('ambitio.directives').directive('slider', ->
@@ -73,23 +73,66 @@ angular.module('ambitio.directives').directive('slider', ->
       range: [0, scope.subgoal.target]
       handles: 1
       start: scope.subgoal.current
-      scope: {
-        subgoal: scope.subgoal
-      }
       serialization:
         resolution: 1
-        to: [
-          (number) ->
-            scope.subgoal.current = number
-        ]
-    })
+        to: $element.find('input.amount')
+    }).change ->
+      scope.$apply ->
+        scope.subgoal.current = $slider.val()
 
   {
     templateUrl: 'views/templates/slider.html'
     restrict: 'E' # restrict to Element (defaults to A (Attribute)
     link: link
+    controller: ($scope) ->
+      console.log 'slider', $scope
   }
 )
+
+angular.module('ambitio.directives').directive 'sparkline', ->
+  {
+    restrict: 'E'
+    require: 'ngModel'
+    scope:
+      subgoal: '=ngModel'
+    link: (scope, $element, attributes) ->
+      update = ->
+        values = []
+
+        for record in scope.subgoal.records
+          values.push(record.value)
+
+        scope.graph_points = values.join()
+        $element.text scope.graph_points
+        $element.peity("line")
+
+      update()
+
+      scope.$watch 'subgoal', (->
+        console.log 'record change'
+        console.log scope.subgoal.records.length
+        update()
+        $element.change()
+      ), true
+  }
+
+angular.module('ambitio.directives').directive 'subgoal', ->
+  {
+    templateUrl: 'views/templates/subgoal.html'
+    restrict: 'E'
+    require: 'ngModel'
+    scope:
+      subgoal: '=ngModel'
+    controller: ($scope) ->
+      console.log $scope
+      window.sc = $scope
+      $scope.save = ->
+        record = {
+          value: parseInt($scope.subgoal.current)
+          created_at: new Date()
+        }
+        $scope.subgoal.records.push(record)
+  }
 
 'use strict'
 
@@ -109,12 +152,6 @@ angular.module('goalServices', ['ngResource']).factory('Goal', ($resource) ->
 
 'use strict'
 
-angular.module('ambitio.controllers').controller 'GoalCtrl', ($scope) ->
-  console.log $scope.title
-  
-
-'use strict'
-
 angular.module("ambitio.controllers").controller 'GoalsCtrl', ($scope) ->
   $scope.createGoal = ->
     $scope.goals.push({
@@ -125,6 +162,8 @@ angular.module("ambitio.controllers").controller 'GoalsCtrl', ($scope) ->
           title: "Subgoal 1"
           current: 0
           target: 10
+          records: [
+          ]
           measurement: "kg"
         }
       ]
@@ -136,10 +175,19 @@ angular.module("ambitio.controllers").controller 'GoalsCtrl', ($scope) ->
       status: "incomplete"
       subgoals: [
         {
+          id: 1
           title: "Dead lifts"
           current: 60
           target: 100
           measurement: "kg"
+          records: [
+            { created_at: new Date(), value: 60 }
+            { created_at: new Date(), value: 63 }
+            { created_at: new Date(), value: 64 }
+            { created_at: new Date(), value: 67 }
+            { created_at: new Date(), value: 63 }
+            { created_at: new Date(), value: 80 }
+          ]
         }
       ]
     },
@@ -148,10 +196,19 @@ angular.module("ambitio.controllers").controller 'GoalsCtrl', ($scope) ->
       status: "complete"
       subgoals: [
         {
+          id: 2
           title: "No Gluten"
           current: 9
           target: 30
           measurement: "days"
+          records: [
+            { created_at: new Date(), value: 9 }
+            { created_at: new Date(), value: 10 }
+            { created_at: new Date(), value: 11 }
+            { created_at: new Date(), value: 12 }
+            { created_at: new Date(), value: 13 }
+            { created_at: new Date(), value: 14 }
+          ]
         }
       ]
     }

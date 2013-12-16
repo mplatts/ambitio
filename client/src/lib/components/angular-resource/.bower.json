@@ -1,16 +1,16 @@
 {
   "name": "angular-resource",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "main": "./angular-resource.js",
   "dependencies": {
     "angular": "1.2.4"
   },
   "homepage": "https://github.com/angular/bower-angular-resource",
-  "_release": "1.2.4",
+  "_release": "1.2.5",
   "_resolution": {
     "type": "version",
-    "tag": "v1.2.4",
-    "commit": "47c445d1b5fba177aef80241d0723093399a1638"
+    "tag": "v1.2.5",
+    "commit": "e42505cc4004430b281332a22ebf2611c9eaa215"
   },
   "_source": "git://github.com/angular/bower-angular-resource.git",
   "_target": "*",

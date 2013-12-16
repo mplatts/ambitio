@@ -10,6 +10,7 @@
     "angular-route": "latest",
     "bootstrap": "latest",
     "nouislider": "latest",
-    "jquery": "latest"
+    "jquery": "latest",
+    "moment": "latest"
   }
 }
